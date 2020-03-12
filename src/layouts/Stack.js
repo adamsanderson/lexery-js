@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 
-export const VerticalStack = styled.div`
+export const VerticalStack = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -11,7 +12,7 @@ export const VerticalStack = styled.div`
   }
 `
 
-export const HorizontalStack = styled.div`
+export const HorizontalStack = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: row;

@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
+import { hoverShadow } from '../animations'
 
-const Button = styled.button`
+const Button = styled(motion.button)`
   font-size: 0.9rem;
   border-radius: 1.5rem;
   padding: 0.25rem 2rem;
@@ -10,5 +13,10 @@ const Button = styled.button`
   font-weight: 700;
   text-transform: uppercase;
 `
+export const HoverButton = ({variants = {}, children, ...props}) => (
+  <Button whileHover="hover" whileTap="hover" variants={{ ...hoverShadow, ...variants }} {...props}>
+    { children }
+  </Button>
+)
 
 export default Button

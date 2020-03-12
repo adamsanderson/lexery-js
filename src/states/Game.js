@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from 'react'
-import { css } from 'emotion'
 import WordInput from '../components/WordInput'
 import WordHint from '../components/WordHint'
 import WordLog from '../components/WordLog'
 import DonutTimer from '../components/DonutTimer'
 import useGameState from '../useGameState'
 import { VerticalStack, HorizontalStack } from '../layouts/Stack'
-import Button from '../components/Button'
+import { HoverButton } from '../components/Button'
+import { staggerChildren, fadeInUp } from '../animations'
 
 export default function Game({ onExit }) {
   const gameState = useGameState(window._WORDS)
@@ -19,17 +19,17 @@ export default function Game({ onExit }) {
   }, [inputRef])
 
   return (
-    <VerticalStack className={css(`width: 40rem;`)}>
-      <HorizontalStack>
+    <VerticalStack initial='initial' animate='animate' variants={staggerChildren} exit='initial' >
+      <HorizontalStack variants={fadeInUp} >
         <WordInput {...gameState.inputProps} wordState={gameState.wordState} ref={inputRef} />
         <DonutTimer timer={gameState.timer} size={'3.5rem'} strokeWidth={'1.25px'} />
       </HorizontalStack>
 
-      <WordHint wordState={gameState.wordState} />
-      <WordLog wordsSeen={gameState.wordsSeen} />
+      <WordHint variants={fadeInUp} wordState={gameState.wordState} />
+      <WordLog variants={fadeInUp} wordsSeen={gameState.wordsSeen} />
 
       {gameState.timer.isDone && (
-        <Button onClick={onExit}>Main Menu</Button>
+        <HoverButton variants={fadeInUp} onClick={onExit}>Main Menu</HoverButton>
       )}
     </VerticalStack>
   );

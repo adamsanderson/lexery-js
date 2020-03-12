@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from 'emotion'
 import { PENDING, VALID, SEEN, UNKNOWN, DIFFERENCE } from '../useGameState'
 import { HowToPlay, HowToAcceptHint, UseOnceRule, ValidWordHint, DifferenceRule } from './Fragment';
+import { motion } from 'framer-motion';
 
 const CONTENT_FOR_STATE = {
   [PENDING]: HowToPlay,
@@ -16,11 +17,11 @@ const style = css(`
   color: #424242;
 `)
 
-const WordHint = ({wordState}) => {
+const WordHint = ({wordState, ...rest}) => {
   return (
-    <div className={style}>
+    <motion.div className={style} {...rest}>
       {CONTENT_FOR_STATE[wordState] || <>&nbsp;</> }
-    </div>
+    </motion.div>
   )
 }
 

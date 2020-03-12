@@ -1,10 +1,11 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
-const WordInput = ({wordsSeen}) => {
+const WordInput = ({wordsSeen, ...rest}) => {
   return (
-    <div>
-      {wordsSeen.join(" → ")}
-    </div>
+    <motion.div {...rest}>
+      ○ {wordsSeen.join(" → ")}
+    </motion.div>
   )
 }
 

@@ -3,6 +3,7 @@ import { css, cx } from 'emotion'
 import { VerticalStack } from './layouts/Stack'
 import Intro from './states/Intro'
 import Game from './states/Game'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const INTRO = "INTRO";
 const GAME = "GAME";
@@ -37,9 +38,9 @@ function App() {
 
   let stageContent
   if (stage === INTRO) {
-    stageContent = <Intro onStart={startGame}/>
+    stageContent = <Intro key="intro" onStart={startGame}/>
   } else if (stage === GAME) {
-    stageContent = <Game onExit={startIntro}/>
+    stageContent = <Game key="game" onExit={startIntro}/>
   } else {
     throw new Error("Unknown Stage " + stage)
   }
@@ -47,8 +48,12 @@ function App() {
   return (
     <div className={cx(fullScreen, centered)}>
       <VerticalStack className={css(`width: 40rem;`)}>
-        <h1 className={header}>Lexery</h1>
-        { stageContent }
+        <motion.h1 className={header} initial={{scale: 0.8}} animate={{scale: 1}} transition={{duration: 0.25, stiffness: 50, type: 'spring'}}>
+          Lexery
+        </motion.h1>
+        <AnimatePresence exitBeforeEnter>
+          { stageContent }
+        </AnimatePresence>
       </VerticalStack>
     </div>
   );
