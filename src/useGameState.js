@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import distance from './levenshteinDistance'
 import useTimer from './useTimer'
 
@@ -9,9 +9,15 @@ export const UNKNOWN = "UNKNOWN"
 export const DIFFERENCE = "DIFFERENCE"
 export const SEEN = "SEEN"
 
-export default function useGameState(dictionary, initialWord = "glass") {
-  const [word, setWord] = useState(initialWord)
-  const [wordsSeen, setWordsSeen] = useState([initialWord])
+export default function useGameState(dictionary, initialWord) {
+  const initialWordRef = useRef(initialWord)
+
+  if (!initialWordRef.current) {
+    const candidates = Object.keys(dictionary).filter(w => w.length === 5)
+    initialWordRef.current = candidates[parseInt(Math.random() * candidates.length)]
+  }
+  const [word, setWord] = useState(initialWordRef.current)
+  const [wordsSeen, setWordsSeen] = useState([initialWordRef.current])
   const [wordState, setWordState] = useState(PENDING)
   const timer = useTimer(60 * 1000)
   
