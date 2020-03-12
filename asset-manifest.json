@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/lexery-js/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/lexery-js/static/js/main.c59c46c5.chunk.js",
+    "main.js.map": "/lexery-js/static/js/main.c59c46c5.chunk.js.map",
+    "runtime-main.js": "/lexery-js/static/js/runtime-main.3725740d.js",
+    "runtime-main.js.map": "/lexery-js/static/js/runtime-main.3725740d.js.map",
+    "static/js/2.c218becd.chunk.js": "/lexery-js/static/js/2.c218becd.chunk.js",
+    "static/js/2.c218becd.chunk.js.map": "/lexery-js/static/js/2.c218becd.chunk.js.map",
+    "index.html": "/lexery-js/index.html",
+    "precache-manifest.6d9503ea2c593abf1d69192acbcaa8ea.js": "/lexery-js/precache-manifest.6d9503ea2c593abf1d69192acbcaa8ea.js",
+    "service-worker.js": "/lexery-js/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/lexery-js/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.c218becd.chunk.js.LICENSE.txt": "/lexery-js/static/js/2.c218becd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3725740d.js",
+    "static/js/2.c218becd.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.c59c46c5.chunk.js"
+  ]
+}
