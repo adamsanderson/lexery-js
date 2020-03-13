@@ -9,7 +9,7 @@ import { HoverButton } from '../components/Button'
 import { staggerChildren, fadeInUp } from '../animations'
 
 export default function Game({ onExit }) {
-  const gameState = useGameState(window._WORDS)
+  const gameState = useGameState(window._WORDS, {})
   const inputRef = useRef()
 
   useEffect(() => {
@@ -28,9 +28,12 @@ export default function Game({ onExit }) {
       <WordHint variants={fadeInUp} wordState={gameState.wordState} />
       <WordLog variants={fadeInUp} wordsSeen={gameState.wordsSeen} />
 
-      {gameState.timer.isDone && (
-        <HoverButton variants={fadeInUp} onClick={onExit}>Main Menu</HoverButton>
-      )}
+      <HorizontalStack variants={fadeInUp}>
+        <HoverButton onClick={gameState.resetGame}>Restart</HoverButton>
+        {gameState.timer.isDone && (
+          <HoverButton onClick={onExit}>Main Menu</HoverButton>
+        )}
+      </HorizontalStack>
     </VerticalStack>
   );
 }

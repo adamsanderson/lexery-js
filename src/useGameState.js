@@ -9,18 +9,20 @@ export const UNKNOWN = "UNKNOWN"
 export const DIFFERENCE = "DIFFERENCE"
 export const SEEN = "SEEN"
 
-export default function useGameState(dictionary, initialWord) {
+export default function useGameState(dictionary, {
+  initialWord,
+}) {
   const initialWordRef = useRef(initialWord)
 
-  if (!initialWordRef.current) {
-    const candidates = Object.keys(dictionary).filter(w => w.length === 5)
-    initialWordRef.current = candidates[parseInt(Math.random() * candidates.length)]
-  }
   const [word, setWord] = useState(initialWordRef.current)
   const [wordsSeen, setWordsSeen] = useState([initialWordRef.current])
   const [wordState, setWordState] = useState(PENDING)
   const timer = useTimer(60 * 1000)
   
+  if (!initialWordRef.current) {
+    resetGame()
+  }
+
   useEffect(() => {
     const lastWord = wordsSeen[wordsSeen.length - 1]
 
@@ -36,7 +38,7 @@ export default function useGameState(dictionary, initialWord) {
       setWordState(VALID);
     }
   }, [word, wordsSeen, dictionary])
-
+  
   function onChange(event) {
     const newWord = event.target.value.toLowerCase()
     setWord(newWord)
@@ -60,6 +62,13 @@ export default function useGameState(dictionary, initialWord) {
     setWord(wordsSeen[wordsSeen.length - 1])
   }
 
+  function resetGame() {
+    const candidates = Object.keys(dictionary).filter(w => w.length === 5)
+    initialWordRef.current = candidates[parseInt(Math.random() * candidates.length)]
+    setWord(initialWordRef.current)
+    setWordsSeen([initialWordRef.current])
+  }
+
   return ({
     inputProps: {
       value: word,
@@ -70,6 +79,7 @@ export default function useGameState(dictionary, initialWord) {
     word,
     wordState,
     wordsSeen,
+    resetGame,
     timer,
   })
 }
