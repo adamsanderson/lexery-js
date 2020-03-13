@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b3c5689e45963b1cd4e63963d60cb540",
+    "revision": "30925bedf82a976ef674aea72bf8b0ad",
     "url": "/lexery-js/index.html"
   },
   {
-    "revision": "c3924fd3e8702849aa4f",
+    "revision": "3598600176c7c67392e3",
     "url": "/lexery-js/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/lexery-js/static/js/2.c218becd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c3924fd3e8702849aa4f",
-    "url": "/lexery-js/static/js/main.c59c46c5.chunk.js"
+    "revision": "3598600176c7c67392e3",
+    "url": "/lexery-js/static/js/main.d09d56d7.chunk.js"
   },
   {
     "revision": "87ffda820665598203b0",
